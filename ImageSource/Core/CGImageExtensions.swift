@@ -17,7 +17,8 @@ public extension CGImage {
         let outputHeight = Int(CGFloat(height) * scale)
         
         guard let colorSpace: CGColorSpace = {
-            if let colorSpace = colorSpace, colorSpace.model != .indexed {
+            if let colorSpace = colorSpace, colorSpace.model != .indexed,
+                colorSpace.supportsOutput {
                 return colorSpace
             } else {
                 return CGColorSpaceCreateDeviceRGB()
